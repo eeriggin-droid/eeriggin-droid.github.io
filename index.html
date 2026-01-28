@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+    <title>Squidward's Professional Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -12,21 +12,42 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a3a3a;
+            background: linear-gradient(135deg, #0a5f5f 0%, #1a8080 50%, #2da8a8 100%);
             min-height: 100vh;
+            position: relative;
         }
 
+        /* Aquatic bubble animation */
+        @keyframes float-bubble {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .bubble {
+            position: fixed;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            pointer-events: none;
+        }
+
+        .bubble:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation: float-bubble 4s ease-in-out infinite; }
+        .bubble:nth-child(2) { width: 50px; height: 50px; top: 50%; right: 15%; animation: float-bubble 5s ease-in-out infinite 0.5s; }
+        .bubble:nth-child(3) { width: 100px; height: 100px; bottom: 20%; left: 20%; animation: float-bubble 6s ease-in-out infinite 1s; }
+        .bubble:nth-child(4) { width: 60px; height: 60px; top: 30%; right: 10%; animation: float-bubble 4.5s ease-in-out infinite 1.5s; }
+
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 1rem 0;
+            background: linear-gradient(90deg, #0d4d4d 0%, #1a7070 100%);
+            color: #e8f4f4;
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid #f39c12;
         }
 
         nav {
@@ -39,24 +60,29 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
+            color: #f39c12;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
-            color: white;
+            color: #e8f4f4;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, text-shadow 0.3s;
+            font-weight: 500;
         }
 
         nav a:hover {
-            color: #667eea;
+            color: #f39c12;
+            text-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
         }
 
         .container {
@@ -67,74 +93,189 @@
 
         .hero {
             text-align: center;
-            color: white;
-            padding: 6rem 2rem;
+            color: #fff;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(10, 95, 95, 0.8) 0%, rgba(26, 128, 128, 0.8) 100%);
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            border-radius: 10px;
+            border: 4px solid #f39c12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             animation: slideDown 0.8s ease;
+            color: #f39c12;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             animation: slideUp 0.8s ease;
+            color: #e8f4f4;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #bbb;
+            font-style: italic;
+            margin-bottom: 2rem;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: #667eea;
-            color: white;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: #1a3a3a;
             padding: 0.75rem 2rem;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             margin: 0.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
         }
 
         .cta-button:hover {
-            background-color: #764ba2;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
         }
 
         section {
-            background: white;
+            background: linear-gradient(135deg, #e8f4f4 0%, #d4eded 100%);
             margin: 2rem 0;
             padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid #f39c12;
         }
 
         section h2 {
-            color: #667eea;
+            color: #0d4d4d;
             margin-bottom: 1.5rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .about-content {
             line-height: 1.8;
             font-size: 1.1rem;
+            color: #1a3a3a;
+        }
+
+        .about-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            border-radius: 10px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 3px solid #f39c12;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotateZ(2deg);
+        }
+
+        .work-history {
+            margin-top: 2rem;
+        }
+
+        .work-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid #f39c12;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .work-item:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(5px);
+        }
+
+        .work-item h3 {
+            color: #0d4d4d;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .work-item .company {
+            color: #f39c12;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .work-item .dates {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .work-item p {
+            color: #1a3a3a;
+            line-height: 1.6;
         }
 
         .skills {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .skill-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #0d4d4d 0%, #1a7070 100%);
+            color: #e8f4f4;
+            padding: 2rem;
+            border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 2px solid #f39c12;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .skill-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3);
+        }
+
+        .skill-card h3 {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .projects {
@@ -145,24 +286,39 @@
         }
 
         .project-card {
-            border: 2px solid #667eea;
+            background: white;
+            border: 3px solid #f39c12;
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 10px;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .project-card:hover {
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(243, 156, 18, 0.3);
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            background: linear-gradient(135deg, #9b59b6 0%, #e74c3c 100%);
+            height: 150px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            border: 2px solid #f39c12;
         }
 
         .project-card h3 {
-            color: #667eea;
+            color: #0d4d4d;
             margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
         .project-card p {
-            color: #666;
+            color: #1a3a3a;
             margin-bottom: 1rem;
         }
 
@@ -179,24 +335,26 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: #333;
+            color: #0d4d4d;
         }
 
         input,
         textarea {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid #ddd;
+            border: 2px solid #0d4d4d;
             border-radius: 5px;
             font-family: inherit;
             font-size: 1rem;
+            background: white;
+            color: #1a3a3a;
         }
 
         input:focus,
         textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+            border-color: #f39c12;
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.4);
         }
 
         textarea {
@@ -207,25 +365,29 @@
         .submit-button {
             width: 100%;
             padding: 0.75rem;
-            background-color: #667eea;
-            color: white;
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            color: #1a3a3a;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
         }
 
         .submit-button:hover {
-            background-color: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
         }
 
         footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background: linear-gradient(90deg, #0d4d4d 0%, #1a7070 100%);
+            color: #e8f4f4;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-top: 3rem;
+            border-top: 3px solid #f39c12;
         }
 
         .social-links {
@@ -233,14 +395,16 @@
         }
 
         .social-links a {
-            color: white;
+            color: #f39c12;
             text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s;
+            margin: 0 1.5rem;
+            transition: all 0.3s;
+            font-weight: bold;
         }
 
         .social-links a:hover {
-            color: #667eea;
+            text-shadow: 0 0 10px rgba(243, 156, 18, 0.8);
+            transform: scale(1.1);
         }
 
         @keyframes slideDown {
@@ -267,7 +431,7 @@
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             nav ul {
@@ -278,101 +442,189 @@
             section {
                 padding: 2rem 1rem;
             }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Aquatic bubbles background -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
     <header>
-        <nav class="container" style="margin: 0; padding: 0;">
-            <div class="logo">Portfolio</div>
+        <nav class="container">
+            <div class="logo">🐙 Squidward</div>
             <ul>
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#work">Work History</a></li>
+                <li><a href="#talents">Talents</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Passionate developer and creative problem solver</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-            <a href="#contact" class="cta-button">Get In Touch</a>
+        <div class="container" style="text-align: center;">
+            <div class="hero-image">🐙</div>
+            <h1>SQUIDWARD Q. TENTACLES</h1>
+            <p>Professional Artist, Clarinet Virtuoso, and Reluctant Employee</p>
+            <p class="hero-subtitle">Bikini Bottom's Most Distinguished Resident</p>
+            <a href="#work" class="cta-button">View My Achievements</a>
+            <a href="#contact" class="cta-button">Hire Me (Please Don't)</a>
         </div>
     </section>
 
     <main class="container">
         <section id="about">
-            <h2>About Me</h2>
+            <h2>🎨 About Me</h2>
             <div class="about-content">
                 <p>
-                    Hello! I'm a dedicated developer with a passion for creating innovative solutions
-                    and learning new technologies. With expertise in web development, I love bringing
-                    ideas to life through code.
+                    Greetings. I am Squidward Quincy Tentacles, a distinguished artist and cultural sophisticate 
+                    with over two decades of experience in the demanding underwater art world. My expertise spans 
+                    multiple disciplines, though most of my time is regrettably spent managing the incompetence of others.
                 </p>
-                <p style="margin-top: 1rem;">
-                    When I'm not coding, you can find me exploring new technologies, contributing to
-                    open-source projects, or sharing knowledge with the community.
+                <p>
+                    I am a self-made visionary who has dedicated myself to the pursuit of artistic excellence, despite 
+                    living in a pineapple under the sea with an infuriatingly cheerful neighbor. My clarinet playing has 
+                    been described as "loud," "persistent," and "impossible to ignore at 3 AM."
                 </p>
+                <p>
+                    When not creating masterpieces or practicing my clarinet (which is always), I can be found at my 
+                    favorite establishment, The Salty Spoon, enjoying a Krusty Krab Signature Beverage and contemplating 
+                    my life choices.
+                </p>
+            </div>
+
+            <h3 style="margin-top: 2rem; color: #0d4d4d;">📸 Personal Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">🎨</div>
+                <div class="gallery-item">🎺</div>
+                <div class="gallery-item">🗿</div>
+                <div class="gallery-item">🎭</div>
             </div>
         </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
+        <section id="work">
+            <h2>💼 Work History & Accomplishments</h2>
+            
+            <div class="work-history">
+                <div class="work-item">
+                    <h3>Cashier Extraordinaire</h3>
+                    <div class="company">The Krusty Krab</div>
+                    <div class="dates">16+ Years (Regrettably Ongoing)</div>
+                    <p>
+                        <strong>Accomplishments:</strong>
+                        Achieved the remarkable feat of remaining employed despite SpongeBob's constant interference. 
+                        Successfully processed approximately 47,292 customer transactions without smiling once. Received 
+                        "Employee of the Month" certificate in 2019, which I immediately removed from the wall and threw away.
+                        Trained over 15 new employees in the art of looking miserable while taking orders.
+                    </p>
+                </div>
+
+                <div class="work-item">
+                    <h3>Self-Proclaimed Art Critic</h3>
+                    <div class="company">Bikini Bottom Cultural Society</div>
+                    <div class="dates">2015 - Present</div>
+                    <p>
+                        <strong>Accomplishments:</strong>
+                        Published critical reviews that have successfully discouraged 87 amateur artists from pursuing 
+                        their "passions." Successfully gatekept art scene by maintaining impossibly high standards. 
+                        Destroyed the confidence of Patrick Star in exactly 2.3 minutes (personal record).
+                    </p>
+                </div>
+
+                <div class="work-item">
+                    <h3>Clarinet Performance Artist</h3>
+                    <div class="company">Various Venues & Random Times</div>
+                    <div class="dates">Ongoing</div>
+                    <p>
+                        <strong>Accomplishments:</strong>
+                        Performed nightly concerts that have been described as "unforgettable" (not as a compliment). 
+                        Successfully driven SpongeBob out of bed at approximately 3 AM on 782 separate occasions. 
+                        Achieved the unique ability to annoy people through solid walls and underwater barriers.
+                    </p>
+                </div>
+
+                <div class="work-item">
+                    <h3>Senior Artistic Director (Self-Appointed)</h3>
+                    <div class="company">House of Tentacles</div>
+                    <div class="dates">2000 - Present</div>
+                    <p>
+                        <strong>Accomplishments:</strong>
+                        Created over 500 artistic sculptures, paintings, and installations that barely anyone appreciates. 
+                        Maintained perfect artistic integrity despite zero financial compensation. Successfully resisted 
+                        all attempts to involve me in silly activities (70% success rate). Achieved minor fame in 
+                        Bikini Bottom's high society circles.
+                    </p>
+                </div>
+
+                <div class="work-item">
+                    <h3>Reluctant Best Friend</h3>
+                    <div class="company">SpongeBob SquarePants</div>
+                    <div class="dates">1986 - Present (Unfortunately)</div>
+                    <p>
+                        <strong>Accomplishments:</strong>
+                        Successfully tolerated 37+ years of relentless optimism and annoying laughter. Attended countless 
+                        jellyfishing trips against my will. Somehow prevented SpongeBob from moving away by being his 
+                        "best friend." Maintained a 0% enthusiasm rate while still being dragged into adventures.
+                    </p>
+                </div>
+
+                <div class="work-item">
+                    <h3>Competitive Eater / Karate Practitioner</h3>
+                    <div class="company">Various Venues</div>
+                    <div class="dates">Sporadic</div>
+                    <p>
+                        <strong>Accomplishments:</strong>
+                        Achieved a respectable record in competitive eating tournaments. Earned a brown belt in karate 
+                        (mostly by accident). Successfully defended myself against SpongeBob's aggression exactly once 
+                        before being sued. Trained under the legendary Sandy Cheeks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="talents">
+            <h2>⭐ Special Talents & Skills</h2>
             <div class="skills">
                 <div class="skill-card">
-                    <h3>Frontend Development</h3>
-                    <p>HTML, CSS, JavaScript, React</p>
+                    <h3>🎨 Fine Arts</h3>
+                    <p>Sculpture, Painting, Installation Art, Modern Interpretive Pieces</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Backend Development</h3>
-                    <p>Node.js, Python, Databases</p>
+                    <h3>🎺 Clarinet Mastery</h3>
+                    <p>Virtuoso Performance, Late Night Serenades, Noise Disturbance</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Web Design</h3>
-                    <p>UI/UX, Responsive Design</p>
+                    <h3>😒 Complaining</h3>
+                    <p>Professional-Grade Negativity, Passive Aggression, Disdain Expression</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Tools & Platforms</h3>
-                    <p>Git, Docker, Cloud Services</p>
+                    <h3>💼 Customer Service</h3>
+                    <p>Unenthusiastic Cashiering, Minimal Smiling, Effective Sarcasm</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>Project One</h3>
-                    <p>
-                        A brief description of your first project. What problems did it solve?
-                        What technologies were used?
-                    </p>
-                    <a href="#" class="cta-button">View Project</a>
+                <div class="skill-card">
+                    <h3>🥋 Self-Defense</h3>
+                    <p>Karate, Evasion Tactics, Running Away From SpongeBob</p>
                 </div>
-                <div class="project-card">
-                    <h3>Project Two</h3>
-                    <p>
-                        A brief description of your second project. What makes it special?
-                        What did you learn from building it?
-                    </p>
-                    <a href="#" class="cta-button">View Project</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project Three</h3>
-                    <p>
-                        A brief description of your third project. What was the impact?
-                        How did you contribute to its success?
-                    </p>
-                    <a href="#" class="cta-button">View Project</a>
+                <div class="skill-card">
+                    <h3>🎭 Dramatic Expressions</h3>
+                    <p>Eye-Rolling, Sighing, Existential Disappointment, Sophisticated Frowning</p>
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Get In Touch</h2>
+            <h2>📧 Get In Touch</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #0d4d4d;">
+                <em>I probably won't respond, but you're welcome to try.</em>
+            </p>
             <form class="contact-form">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -383,21 +635,22 @@
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label for="message">Message (Keep It Brief)</label>
+                    <textarea id="message" name="message" required placeholder="Why are you contacting me?"></textarea>
                 </div>
-                <button type="submit" class="submit-button">Send Message</button>
+                <button type="submit" class="submit-button">Send (Don't Bother)</button>
             </form>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Your Name. All rights reserved.</p>
+            <p>&copy; 2026 Squidward Q. Tentacles. All Rights Reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Located at: 122 Conch Street, Bikini Bottom, Ocean</p>
             <div class="social-links">
-                <a href="#" title="GitHub">GitHub</a>
-                <a href="#" title="LinkedIn">LinkedIn</a>
-                <a href="#" title="Twitter">Twitter</a>
+                <a href="#">🎨 DeviantArt</a>
+                <a href="#">🎵 SoundCloud</a>
+                <a href="#">😠 Twitter</a>
             </div>
         </div>
     </footer>
