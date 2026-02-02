@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.cache/
+site-backup-*.zip
+.env
+.DS_Store
+npm-debug.log
+.vscode/
