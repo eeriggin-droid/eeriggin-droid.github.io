@@ -1,8 +1,26 @@
+# Node / build
 node_modules/
 dist/
 .cache/
+
+# Backups / env
 site-backup-*.zip
 .env
-.DS_Store
-npm-debug.log
+
+# OS / editor
 .vscode/
+.DS_Store
+Thumbs.db
+npm-debug.log
+
+# LaTeX (safe to keep)
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.fls
+*.fdb_latexmk
+*.synctex*
+
